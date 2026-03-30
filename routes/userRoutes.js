@@ -1,8 +1,8 @@
-const express = require("express");
-const router = express.Router();
-const db = require("../db");
+import express from "express";
+import db from "../data/db.js";
+import { v4 as uuidv4 } from "uuid";
 
-const { v4: uuidv4 } = require("uuid");
+const router = express.Router();
 
 // CREATE
 router.post("/", (req, res) => {
@@ -15,11 +15,17 @@ router.post("/", (req, res) => {
   const id = uuidv4();
   const createdAt = new Date().toISOString();
 
-  const stmt = db.prepare("INSERT INTO users (id, name, email, createdAt) VALUES (?, ?, ?, ?)");
+  const stmt = db.prepare(`
+    INSERT INTO users (id, name, email, createdAt) 
+    VALUES (?, ?, ?, ?)
+  `);
+
   stmt.run(id, name, email, createdAt);
 
   res.status(201).json({ id, name, email, createdAt });
 });
+
+export default router;
 
 // READ (ALL)
 
@@ -28,6 +34,3 @@ router.post("/", (req, res) => {
 // UPDATE
 
 // DELETE
-
-
-module.exports = router;
