@@ -2,7 +2,8 @@ import "dotenv/config";
 import express from "express";
 import db from "./data/db.js";
 import menu from "./data/menu.json" with { type: "json" };
-import userRoutes from "./routes/userRoutes.js";
+import apiRoutes from "./routes/api.js";
+
 const app = express();
 
 app.use(express.json());
@@ -19,7 +20,7 @@ if (existingMenu.count === 0) {
   }
 }
 
-app.use("/api/users", userRoutes);
+app.use("/api", apiRoutes);
 
 app.listen(PORT, () => {
   console.log(`API:et lyssnar på http://localhost:${PORT}`);
