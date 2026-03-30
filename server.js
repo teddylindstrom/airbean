@@ -21,7 +21,9 @@ if (existingMenu.count === 0) {
 }
 
 app.use("/api", apiRoutes);
-
+app.get("/", (req, res) => {
+  res.json({ text: "coffe shop in the air" });
+});
 app.listen(PORT, () => {
   console.log(`API:et lyssnar på http://localhost:${PORT}`);
 });
