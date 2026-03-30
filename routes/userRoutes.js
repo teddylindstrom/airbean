@@ -25,7 +25,7 @@ router.post("/", (req, res) => {
   res.status(201).json({ id, name, email, createdAt });
 });
 
-export default router;
+
 
 // READ (ALL)
 
@@ -34,3 +34,19 @@ export default router;
 // UPDATE
 
 // DELETE
+router.delete ("/:id",(req, res) => {
+  const id = req.params.id;
+  try {
+    const stmt  = db.prepare("DELETE FROM users WHERE id = ?")
+    const result = stmt.run(id);
+    if (result.changes===0){
+      return res .status(404).json({BYEBYE:"cant find you :/"})
+    }
+    res.status(204).send()
+  } catch (error) {
+    console.error("DELETE /users/:id", error);
+    res.status(500).json({ fel: "can not delete user, you traped :P", error });
+  }
+})
+
+export default router;
