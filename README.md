@@ -1,31 +1,43 @@
-## 🌳 Git-strategi & Kodgranskning
+## 🌳 Git-strategi & Kodgranskning - Grupp 8 Backend
 
 - **Gyllene regeln:** **Ingen pushar direkt till `main`!** All kod görs i en egen branch.
 - **Branch-namn:** [T.ex. `feature/skapa-konto`, `fix/meny-bugg` – håll det enkelt]
-- **Pull Requests (PR):** [Minst X person måste kolla igenom koden innan vi klickar på merge till main]
+- **Pull Requests (PR):** [Flora kollar igenom koden, innan vi klickar på merge till main]
 - **Om det blir Git-kaos:** [T.ex. "Vi raderar inget, utan ber läraren eller en klasskompis om hjälp med merge-konflikten"]
 
 *(Fyll i: hur undviker vi att `main` går sönder och hur stöttar vi varandra med koden?)*
+Vi ber om hjälp via vår kanal i Discord. 
+- I första hand vår grupp 8 (Google och ChatGPT)
+- I andra hand Klasskamrater
+- I tredje hand Lärare
 
 ---
 
 ## 📋 Agilt arbetssätt
 
-- **Vår tavla:** [Länk till GitHub Projects eller Trello]
+- **Vår tavla:** [[Länk till Trello](https://trello.com/b/q18XWhTX)]
+
 - **Uppdateringsrutin:** [T.ex. "Vi flyttar våra kort på tavlan varje morgon under vår standup"]
-- **User stories & tekniska tasks:** [Vem bryter ner kraven? Kom ihåg att skapa kort för backend-uppgifter som "Sätt upp Express" och "Validering"]
+
+- **User stories & tekniska tasks:** [Vem bryter ner kraven? Kom ihåg att skapa kort för backend-uppgifter som "Sätt upp Express" och "Validering"] - Det gör vi tillsammans i grupp
+
 - **När är en uppgift klar?** [T.ex. koden funkar, är testad manuellt i Postman, och PR är godkänd]
 
 *(Fyll i: hur håller ni tavlan uppdaterad så alla vet vad som görs?)*
+Man kommunicerar i Discord kanalen när något är påbörjat vs klart så att vi kan backtracka när saker är genomförda.
 
 ---
 
 ## 🛟 Problemlösning & Samarbete
 
-- **Om någon fastnar tekniskt:** [T.ex. "Sitt inte fast ensam i mer än 1 timme. Be om parprogrammering i chatten"]
+- **Om någon fastnar tekniskt:** [T.ex. "Sitt inte fast ensam i mer än 1 timme. Be om parprogrammering i chatten (Discord)"]
+Vi meddelar varandra i chatten för att få hjälp och komma förbi hinder.
 - **Att dela på jobbet:** [Hur ser vi till att alla får testa att bygga endpoints och skriva databasanrop?]
+Vi ger varandra möjligheten att ta del av projektets delar och att ta sig an en del. Vi gör vårt bästa i att fördela arbetsmängden jämställt.
 - **Om någon blir sjuk eller saknas:** [Hur omfördelar vi uppgifter?]
+Vi ger personen chans att själv hinna ikapp en dag, men efter två dagar så omfördelar vi det till oss andra och meddelar läraren.
 - **Om samarbetet inte funkar:** [T.ex. ta upp det på standup direkt, eller ta in läraren som neutral part ifall det behövs]
+Vi meddelar personen själv först, vid två tillfällen, om det inte genererar förändring så ber vi om råd från lärare om hur vi fortgår.
 
 *(Fyll i: ni vill ha en trygg väg att lyfta problem tidigt, utan att det blir personligt.)*
 
@@ -37,7 +49,7 @@ Vi har läst detta kontrakt och committerar oss till att följa det tills vi gem
 
 | Namn | Datum | Signatur / OK |
 |------|-------|---------------|
-|      |       |               |
+|    Teddy Lindström |  25/3/2026     |    Teddy           |
 |      |       |               |
 |      |       |               |
 |      |       |               |
