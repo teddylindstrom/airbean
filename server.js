@@ -20,6 +20,22 @@ if (existingMenu.count === 0) {
   }
 }
 
+const existingOrders = db.prepare("SELECT COUNT(*) as count FROM orders").get();
+
+if (existingOrders.count === 0) {
+  const insertOrder = db.prepare(`
+    INSERT INTO orders (id, status, created_at, eta_minutes)
+    VALUES (?, ?, ?, ?)
+  `);
+
+  insertOrder.run(
+    "123",
+    "pending",
+    new Date().toISOString(),
+    15
+  );
+}
+
 app.use("/api", apiRoutes);
 app.get("/", (req, res) => {
   res.json({ text: "coffe shop in the air" });
