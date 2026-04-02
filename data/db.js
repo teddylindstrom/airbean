@@ -14,9 +14,9 @@ db.exec(`
 //skapa menu
 db.exec(`
   CREATE TABLE IF NOT EXISTS products (
-    id TEXT PRIMARY KEY,
+    id INTEGER PRIMARY KEY,
     title TEXT NOT NULL,
-    price TEXT NOT NULL
+    price INTEGER NOT NULL
   )
 `);
 
