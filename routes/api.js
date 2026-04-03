@@ -57,7 +57,7 @@ const elapsedMinutes = Math.floor((now - createdAt) / 60000);
 const remainingTime = Math.max(order.eta_minutes - elapsedMinutes, 0);
 
 res.json({
-status: order.status,
+status: order.status,,
 eta: remainingTime
 });
 });*/
