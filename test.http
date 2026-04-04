@@ -1,0 +1,4 @@
+PUT http://localhost:3000/api/user/6cbb722d-870e-4a23-9546-2b91ffec5f8d
+Content-Type: application/json
+
+{}
