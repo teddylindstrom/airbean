@@ -1,58 +1,69 @@
 import express from "express";
 import db from "../data/db.js";
 import { v4 as uuidv4 } from "uuid";
+import { validateOrder } from "../middleware/validateOrder.js";
 
 const router = express.Router();
 
-//  CREATE ORDER
-router.post("/", (req, res) => {
-  const { userId, items } = req.body;
-
-  //  validering
-  if (!userId || !items || items.length === 0) {
-    return res.status(400).json({ error: "Missing data or empty order" });
-  }
+// CREATE ORDER låter middleware validera ordern innan den skapas
+router.post("/", validateOrder, (req, res) => {
+  //inloggad användare: userId finns i req.body om användaren är inloggad, annars null för gästorder 
+  const { userId = null, items } = req.body || {};
 
   const orderId = uuidv4();
- 
+  //skapar ett enkelt ordernummer.
+  const orderNumber = Math.floor(100000 + Math.random() * 900000);
+  const status = "pending";
+  const createdAt = new Date().toISOString();
 
   let total = 0;
-
+  let totalQuantity = 0;
+  // Beräkna totalpris och total mängd för att kunna beräkna ETA
   try {
-    //  loopar igenom items och hämtear priser från databasen
     for (const item of items) {
-      const product = db.prepare(
-        "SELECT * FROM products WHERE id = ?"
-      ).get(item.productId);
+      const product = db
+        .prepare("SELECT * FROM products WHERE id = ?")
+        .get(item.productId);
 
-      // produkt finns inte
-      if (!product) {
-        return res.status(400).json({ error: "Invalid product" });
-      }
-
-      // Databas-pris
       total += product.price * item.quantity;
-
-      // spara order_items
-      db.prepare(`
-        INSERT INTO order_items (order_id, product_id, quantity, price)
-        VALUES (?, ?, ?, ?)
-      `).run(orderId, item.productId, item.quantity, product.price);
+      totalQuantity += item.quantity;
     }
 
-    // skapa order
+    const etaMinutes = 10 + totalQuantity * 2;
 
+    // skapa order i orders-tabellen
+    db.prepare(`
+      INSERT INTO orders (id, user_id, total_price, status, eta_minutes, created_at)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `).run(orderId, userId, total, status, etaMinutes, createdAt);
 
-    res.status(201).json({ orderId, total });
+    // skapa order_items
+    const insertOrderItem = db.prepare(`
+      INSERT INTO order_items (order_id, product_id, quantity, price)
+      VALUES (?, ?, ?, ?)
+    `);
 
+    for (const item of items) {
+      insertOrderItem.run(orderId, item.productId, item.quantity, item.price);
+    }
+
+    // returnera kvitto
+    res.status(201).json({
+      orderId,
+      orderNumber,
+      totalPrice: total,
+      etaMinutes,
+      status,
+      createdAt,
+      items,
+    });
   } catch (error) {
     console.error("POST /orders", error);
     res.status(500).json({ error: "Could not create order" });
   }
 });
 
-
-//  GET ORDER HISTORY
+// GET ORDER HISTORY
 router.get("/:userId", (req, res) => {
   const userId = req.params.userId;
 
@@ -64,20 +75,19 @@ router.get("/:userId", (req, res) => {
     if (orders.length === 0) {
       return res.status(404).json({ error: "No orders found" });
     }
-
-    const result = orders.map(order => {
+    // För varje order, hämta tillhörande order_items
+    const result = orders.map((order) => {
       const items = db.prepare(`
         SELECT * FROM order_items WHERE order_id = ?
       `).all(order.id);
 
       return {
         ...order,
-        items
+        items,
       };
     });
 
     res.json(result);
-
   } catch (error) {
     console.error("GET /orders/:userId", error);
     res.status(500).json({ error: "Could not fetch orders" });
