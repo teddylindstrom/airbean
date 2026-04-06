@@ -68,7 +68,7 @@ router.put("/:userId", (req, res) => {
 
     res.status(200).json(updatedUser);
   } catch (error) {
-    console.error("PUT /users/:userId", error);
+    console.error("PUT /api/user/:userId", error);
     res.status(500).json({
       error: "Could not update user",
     });
