@@ -53,3 +53,22 @@ Vi har läst detta kontrakt och committerar oss till att följa det tills vi gem
 |      |       |               |
 |      |       |               |
 |      |       |               |
+
+
+POST http://localhost:3000/api/orders
+Content-Type: application/json
+
+{
+  "userId": "f25d5f21-3037-4b23-a054-61d21f4a5469",
+  "items": [
+    {
+      "productId": 999,
+      "quantity": 2,
+      "price": 39
+    }
+  ]
+}
+
+Middleware-förklaring
+
+En middleware används för att validera ordern innan den sparas. Den kontrollerar att produkterna finns i databasen och att priset stämmer. Om något är fel stoppas requesten.

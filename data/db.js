@@ -20,23 +20,15 @@ db.exec(`
   )
 `);
 
-db.exec(`
-  CREATE TABLE IF NOT EXISTS orders (
-    id TEXT PRIMARY KEY,
-    status TEXT NOT NULL,
-    created_at TEXT NOT NULL,
-    eta_minutes INTEGER NOT NULL
-)
-`);
-
 // Orders
 db.exec(`
   CREATE TABLE IF NOT EXISTS orders (
     id TEXT PRIMARY KEY,
     user_id TEXT,
     total_price INTEGER,
-    status TEXT,
-    createdAt TEXT,
+    status TEXT NOT NULL,
+    eta_minutes INTEGER NOT NULL,
+    created_at TEXT NOT NULL,
     FOREIGN KEY(user_id) REFERENCES users(id)
   )
 `);
