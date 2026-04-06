@@ -31,7 +31,50 @@ router.post("/", (req, res) => {
 
 // READ (ONE)
 
-// UPDATE
+// UPDATE user
+
+router.put("/:userId", (req, res) => {
+  const { userId } = req.params;
+  const { name, email } = req.body;
+
+  if (!name && !email) {
+    return res.status(400).json({
+      error: "At least name or email must be provided",
+    });
+  }
+
+  try {
+    //kollar om användaren finns i databasen
+    const existingUser = db
+      .prepare("SELECT * FROM users WHERE id = ?")
+      .get(userId);
+
+    if (!existingUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const updatedName = name ?? existingUser.name;
+    const updatedEmail = email ?? existingUser.email;
+
+    db.prepare(`
+      UPDATE users
+      SET name = ?, email = ?
+      WHERE id = ?
+    `).run(updatedName, updatedEmail, userId);
+
+    const updatedUser = db
+      .prepare("SELECT * FROM users WHERE id = ?")
+      .get(userId);
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    console.error("PUT /api/user/:userId", error);
+    res.status(500).json({
+      error: "Could not update user",
+    });
+  }
+});
+
 
 // DELETE
 router.delete ("/:id",(req, res) => {
