@@ -10,15 +10,18 @@ Systemet är byggt med:
 
 # 🚀 Kom igång (STEG FÖR STEG)
 
-## 1. Installera dependencies
+## 1. Installera dependencies (Öppna Ny Terminal)
 ```bash
 npm install
 
 ##2. Starta servern
 npm run dev
 
-##3. Öppna i webbläsaren
+##3. Öppna i webbläsaren (Klicka på host eller Open Live)
 http://localhost:3000
+
+## Navigering
+1. 
 
 
 📁 Projektstruktur (VAD ÄR VAD)
