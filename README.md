@@ -21,7 +21,10 @@ npm run dev
 http://localhost:3000
 
 ## Navigering
-1. 
+1. http://localhost:3000
+2. http://localhost:3000/menu
+3. http://localhost:3000/order
+4. http://localhost:3000/o.s.v...
 
 
 📁 Projektstruktur (VAD ÄR VAD)
