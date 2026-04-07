@@ -1,15 +1,17 @@
 ## 🌳 Git-strategi & Kodgranskning - Grupp 8 Backend
 
 - **Gyllene regeln:** **Ingen pushar direkt till `main`!** All kod görs i en egen branch.
-- **Branch-namn:** [T.ex. `feature/skapa-konto`, `fix/meny-bugg` – håll det enkelt]
-- **Pull Requests (PR):** [Flora kollar igenom koden, innan vi klickar på merge till main]
-- **Om det blir Git-kaos:** [T.ex. "Vi raderar inget, utan ber läraren eller en klasskompis om hjälp med merge-konflikten"]
+- **Branch-namn:** Enkelt och tydligt, med varsin branch namn
+- **Pull Requests (PR):** Flora kollar igenom koden, innan vi klickar på merge till main
+- **Om det blir Git-kaos:** 
 
-*(Fyll i: hur undviker vi att `main` går sönder och hur stöttar vi varandra med koden?)*
+*Hur stöttar vi varandra och undviker att main går sönder?*
 Vi ber om hjälp via vår kanal i Discord. 
 - I första hand vår grupp 8 (Google och ChatGPT)
 - I andra hand Klasskamrater
 - I tredje hand Lärare
+
+För att undvika att `main` går sönder arbetar vi alltid i egna branches och gör Pull Requests som granskas innan merge. Vi testar vår kod lokalt innan vi pushar och ser till att inget bryter befintlig funktionalitet. Vi hjälper varandra genom kodgranskning, tydlig kommunikation i Discord och genom att förklara lösningar för varandra.
 
 ---
 
