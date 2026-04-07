@@ -19,29 +19,13 @@ För att undvika att `main` går sönder arbetar vi alltid i egna branches och g
 
 - **Vår tavla:** [[Länk till Trello](https://trello.com/b/q18XWhTX)]
 
-- **Uppdateringsrutin:** [T.ex. "Vi flyttar våra kort på tavlan varje morgon under vår standup"]
-
-- **User stories & tekniska tasks:** [Vem bryter ner kraven? Kom ihåg att skapa kort för backend-uppgifter som "Sätt upp Express" och "Validering"] - Det gör vi tillsammans i grupp
-
-- **När är en uppgift klar?** [T.ex. koden funkar, är testad manuellt i Postman, och PR är godkänd]
-
-*(Fyll i: hur håller ni tavlan uppdaterad så alla vet vad som görs?)*
-Man kommunicerar i Discord kanalen när något är påbörjat vs klart så att vi kan backtracka när saker är genomförda.
+Vi håller tavlan uppdaterad genom att direkt flytta kort när vi börjar eller avslutar en uppgift. Under våra standups går vi igenom tavlan tillsammans så att alla har koll på vad som pågår och vad som är klart.
 
 ---
 
 ## 🛟 Problemlösning & Samarbete
 
-- **Om någon fastnar tekniskt:** [T.ex. "Sitt inte fast ensam i mer än 1 timme. Be om parprogrammering i chatten (Discord)"]
-Vi meddelar varandra i chatten för att få hjälp och komma förbi hinder.
-- **Att dela på jobbet:** [Hur ser vi till att alla får testa att bygga endpoints och skriva databasanrop?]
-Vi ger varandra möjligheten att ta del av projektets delar och att ta sig an en del. Vi gör vårt bästa i att fördela arbetsmängden jämställt.
-- **Om någon blir sjuk eller saknas:** [Hur omfördelar vi uppgifter?]
-Vi ger personen chans att själv hinna ikapp en dag, men efter två dagar så omfördelar vi det till oss andra och meddelar läraren.
-- **Om samarbetet inte funkar:** [T.ex. ta upp det på standup direkt, eller ta in läraren som neutral part ifall det behövs]
-Vi meddelar personen själv först, vid två tillfällen, om det inte genererar förändring så ber vi om råd från lärare om hur vi fortgår.
-
-*(Fyll i: ni vill ha en trygg väg att lyfta problem tidigt, utan att det blir personligt.)*
+Vi lyfter problem tidigt genom att ta upp dem i Discord eller under standup utan att peka ut någon person. Fokus ligger på problemet och lösningen, inte individen. På så sätt skapar vi en trygg miljö där alla vågar be om hjälp.
 
 ---
 
@@ -51,10 +35,10 @@ Vi har läst detta kontrakt och committerar oss till att följa det tills vi gem
 
 | Namn | Datum | Signatur / OK |
 |------|-------|---------------|
-|    Teddy Lindström |  25/3/2026     |    Teddy           |
-|      |       |               |
-|      |       |               |
-|      |       |               |
+Teddy  7/4-2026 OK
+Madeleine  7/4-2026 OK
+Flora 7/4-2026 OK
+Hosein 7/4-2026
 
 
 POST http://localhost:3000/api/orders
