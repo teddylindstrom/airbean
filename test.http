@@ -1,13 +1,6 @@
-POST http://localhost:3000/api/orders
+PUT http://localhost:3000/api/user/f25d5f21-3037-4b23-a054-61d21f4a5469
 Content-Type: application/json
 
 {
-  "userId": "f25d5f21-3037-4b23-a054-61d21f4a5469",
-  "items": [
-    {
-      "productId": 999,
-      "quantity": 2,
-      "price": 39
-    }
-  ]
+  "name": "Test"
 }

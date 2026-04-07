@@ -5,7 +5,6 @@ import menu from "./data/menu.json" with { type: "json" };
 import apiRoutes from "./routes/api.js";
 
 const app = express();
-
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
