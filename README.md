@@ -1,4 +1,4 @@
-📄## Beskrivning
+
 ## AIRBEAN COFFE SHOP
 Airbean är ett backend-API skolprojekt, där du ska kunna beställa kaffe med drönare.
 Du ska kunna se olika kaffesorter, priser, användare och orderhistorik, vilket hanteras av API:et.
@@ -75,12 +75,9 @@ http://localhost:3000/api
 
 📦## END POINTS
 
-1. 🟢 GET /menu
-
-  Hämtar alla produkter
-
-  GET /api/menu
-  Response:
+## 1. GET /menu - hämtar alla produkter
+      GET /api/menu
+      Response:
   [
     {
       "id": 1,
@@ -89,35 +86,45 @@ http://localhost:3000/api
     }
   ]
 
-2. 🟢 GET /menu/:id
-
-  Hämtar en specifik produkt
-
-  GET /api/menu/1
-
-3. 🟢 POST /users
-
-  Skapar en användare
-
-  POST /api/users
+## 2. POST /user - skapar en användare
+      POST /api/user
   Body:
   {
     "name": "Teddy",
     "email": "teddy@mail.com"
   }
 
-4. 🟢 GET /users/:id
+## 3. GET /user/:id - hämtar en användare
+      GET /api/user/:id
+      Response:
+{
+    "name": "Teddy",
+    "email": "teddy@mail.com"
+  }
 
-  Hämtar en användare
+## 4. PUT /user/:id - uppdaterar en användares uppgifter
+      PUT /api/user/:id
+      Body:
+{
+    "name": "Madde",
+    "email": "madde@example.com"
+}
 
-  GET /api/users/{id}
+      Response:
+    {
+    "id": "3e6a29dd-9998-4d6e-9852-0bf3bc5ad18a",
+    "name": "Madde",
+    "email": "madde@example.com",
+    "createdAt": "2026-04-09T17:48:31.128Z"
+}
 
-5. 🟢 POST /orders
+## 5. DELETE /user/:id - tar bort en användare
+      DELETE /api/user/:id
+      Response: 204 no content
 
-  Skapar en order
-
-  POST /api/orders
-  Body:
+## 6. POST /orders -  skapar en order
+      POST /api/orders
+      Body:
   {
     "userId": "uuid",
     "items": [
@@ -129,23 +136,71 @@ http://localhost:3000/api
     ]
   }
   Response:
-  {
-    "message": "Order skapad",
-    "orderId": "uuid",
-    "total": 78
-  }
+{
+    "orderId": "13b0cb3e-16c7-427b-8744-e2260ad69aa9",
+    "orderNumber": 423738,
+    "totalPrice": 78,
+    "etaMinutes": 14,
+    "status": "pending",
+    "createdAt": "2026-04-09T18:45:02.211Z",
+    "items": [
+        {
+            "productId": 1,
+            "quantity": 2,
+            "price": 39
+        }
+    ]
+}
 
-6. 🟢 GET /orders/:id
+## 7. GET /orders/:userId -  hämtar en användares orderhistorik
+      GET /api/orders/:userId
+      Responde: 200 OK
+[
+    {
+        "id": "e723c120-c841-4045-a70f-2c6e63af6428",
+        "user_id": "3e6a29dd-9998-4d6e-9852-0bf3bc5ad18a",
+        "total_price": 78,
+        "status": "pending",
+        "eta_minutes": 14,
+        "created_at": "2026-04-09T17:48:46.221Z",
+        "items": [
+            {
+                "id": 1,
+                "order_id": "e723c120-c841-4045-a70f-2c6e63af6428",
+                "product_id": "1.0",
+                "quantity": 2,
+                "price": 39
+            }
+        ]
+    }
+]
 
-  Hämtar en order
+## 8. GET /orders/userId - status för en användares order historik
+      GET /api/orders/userId
+      Response:
+[
+    {
+        "id": "e723c120-c841-4045-a70f-2c6e63af6428",
+        "user_id": "3e6a29dd-9998-4d6e-9852-0bf3bc5ad18a",
+        "total_price": 78,
+        "status": "pending",
+        "eta_minutes": 14,
+        "created_at": "2026-04-09T17:48:46.221Z",
+        "items": [
+            {
+                "id": 1,
+                "order_id": "e723c120-c841-4045-a70f-2c6e63af6428",
+                "product_id": "1.0",
+                "quantity": 2,
+                "price": 39
+            }
+        ]
+    }
+]
+ 
 
-  GET /api/orders/{id}
 
-7. 🟢 GET /orders
-
-  Hämtar alla ordrar
-
-  GET /api/orders
+      
 
 🛟 ## Middleware
 
