@@ -296,7 +296,7 @@ Testad i Postman
 Pull Request godkänd
 
 
-👥 ## Team
+## 👥 Team
 Namn	
 Teddy 
 Madeleine
