@@ -1,5 +1,5 @@
 
-##AIRBEAN COFFE SHOP
+# AIRBEAN COFFE SHOP
 Airbean är ett backend-API skolprojekt, där du ska kunna beställa kaffe med drönare.
 Du ska kunna se olika kaffesorter, priser, användare och orderhistorik, vilket hanteras av API:et.
 
@@ -10,17 +10,17 @@ Systemet är byggt med:
 
 # 🚀 Kom igång (STEG FÖR STEG)
 
-## 1. Installera dependencies (Öppna Ny Terminal)
+1. Installera dependencies (Öppna Ny Terminal)
 ```bash
 npm install
 
-##2. Starta servern
+2. Starta servern
 npm run dev
 
-##3. Öppna i webbläsaren (Klicka på host eller Open Live)
+3. Öppna i webbläsaren (Klicka på host eller Open Live)
 http://localhost:3000
 
-## Navigering
+Navigering
 1. http://localhost:3000
 2. http://localhost:3000/menu
 3. http://localhost:3000/order
@@ -46,7 +46,7 @@ project/
 (Bad en AI skriva projektstrukturen för att få det snyggt med "grenar".)
 
 
-⚙️ ## FUNKTIONER
+⚙️ FUNKTIONER
 
 - Skapa användare
 - Hämta meny
@@ -55,7 +55,7 @@ project/
 - Spara data i databas
 - Hantera orderstatus
 
-🔄 ## Hur systemet fungerar
+🔄 Hur systemet fungerar
 Skapa order (flöde)
 1. Request skickas till /api/orders
 2. Middleware kontrollerar:
@@ -68,14 +68,14 @@ Skapa order (flöde)
 4. Response skickas tillbaka
 
 
-🌐 ## API Dokumentation
+🌐 API Dokumentation
 Base URL
 http://localhost:3000/api
 
 
-📦## END POINTS
+📦 END POINTS
 
-## 1. GET /menu - hämtar alla produkter
+1. GET /menu - hämtar alla produkter
       GET /api/menu
       Response:
   [
@@ -86,7 +86,7 @@ http://localhost:3000/api
     }
   ]
 
-## 2. POST /user - skapar en användare
+2. POST /user - skapar en användare
       POST /api/user
   Body:
   {
@@ -94,15 +94,17 @@ http://localhost:3000/api
     "email": "teddy@mail.com"
   }
 
-## 3. GET /user/:id - hämtar en användare
+3. GET /user/:id - hämtar en användare
       GET /api/user/:id
       Response:
 {
-    "name": "Teddy",
-    "email": "teddy@mail.com"
-  }
+    "id": "e8ddb3a7-8f69-4158-9bc1-3f77da1e4430",
+    "name": "maja",
+    "email": "gräddnos@gmail.com",
+    "createdAt": "2026-04-09T19:19:56.122Z"
+}
 
-## 4. PUT /user/:id - uppdaterar en användares uppgifter
+4. PUT /user/:id - uppdaterar en användares uppgifter
       PUT /api/user/:id
       Body:
 {
@@ -118,11 +120,11 @@ http://localhost:3000/api
     "createdAt": "2026-04-09T17:48:31.128Z"
 }
 
-## 5. DELETE /user/:id - tar bort en användare
+5. DELETE /user/:id - tar bort en användare
       DELETE /api/user/:id
       Response: 204 no content
 
-## 6. POST /orders -  skapar en order
+6. POST /orders -  skapar en order
       POST /api/orders
       Body:
   {
@@ -152,7 +154,7 @@ http://localhost:3000/api
     ]
 }
 
-## 7. GET /orders/:userId -  hämtar en användares orderhistorik
+7. GET /orders/:userId -  hämtar en användares orderhistorik
       GET /api/orders/:userId
       Responde: 200 OK
 [
@@ -175,7 +177,7 @@ http://localhost:3000/api
     }
 ]
 
-## 8. GET /orders/userId - status för en användares order historik
+8. GET /orders/userId - status för en användares order historik
       GET /api/orders/userId
       Response:
 [
@@ -202,7 +204,7 @@ http://localhost:3000/api
 
       
 
-🛟 ## Middleware
+🛟 Middleware
 
 Middleware används för att stoppa fel innan de når databasen.
 
@@ -211,7 +213,7 @@ Den kontrollerar:
 - Att produkter finns i databasen
 - Att priset stämmer
 
-🗄️ ## Databas
+🗄️ Databas
   Tabeller
   Users
   - id
@@ -236,7 +238,7 @@ Den kontrollerar:
   - price
 
 
-🔌 ## WebSockets (framtida funktion)
+🔌 WebSockets (framtida funktion)
 
 WebSockets kan användas för att skapa realtidsuppdateringar i applikationen.
 
@@ -252,7 +254,7 @@ Slippa uppdatera sidan manuellt
 Få direkt feedback i realtid
 
 
-🌳 ## Git-strategi & Kodgranskning
+🌳 Git-strategi & Kodgranskning
 Ingen pushar direkt till main
 All kod sker i egna branches
 Pull Requests används alltid
@@ -265,14 +267,14 @@ Vi gör code reviews
 Vi kommunicerar via Discord
 
 
-📋 ## Agilt arbetssätt
+📋 Agilt arbetssätt
 Vi använder Trello
 Uppdaterar tasks dagligen
 Har standups
 Kommunicerar via Discord
 
 
-🛟 ## Samarbete & Problemlösning
+🛟 Samarbete & Problemlösning
 Sitt inte fast mer än 1 timme
 Be om hjälp i Discord
 Jobba tillsammans vid behov (parprogrammering)
@@ -287,7 +289,7 @@ Vid frånvaro:
 Uppgifter omfördelas efter 2 dagar
 
 
-✅ ## Definition av klar uppgift
+✅ Definition av klar uppgift
 
 En uppgift är klar när:
 
@@ -296,7 +298,7 @@ Testad i Postman
 Pull Request godkänd
 
 
-## 👥 Team
+👥 Team
 Namn	
 Teddy 
 Madeleine
