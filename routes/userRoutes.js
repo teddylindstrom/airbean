@@ -25,23 +25,13 @@ router.post("/", (req, res) => {
   res.status(201).json({ id, name, email, createdAt });
 });
 
-// GET USER
-router.get("/:id", (req, res) => {
-  const id = req.params.id;
-  try {
-    const stmt = db.prepare("SELECT * FROM users WHERE id = ?");
-    const result = stmt.get(id);
-    console.log(result);
 
-    if (!result) {
-      return res.status(404).json({ BYEBYE: "cant find you :/" });
-    }
-    res.status(200).json(result);
-  } catch (error) {
-    console.error("GET /users/:id", error);
-    res.status(500).json({ fel: "can't find you :P", error });
-  }
-});
+
+// READ (ALL)
+
+// READ (ONE)
+
+// UPDATE user
 
 router.put("/:userId", (req, res) => {
   const { userId } = req.params;
@@ -66,13 +56,11 @@ router.put("/:userId", (req, res) => {
     const updatedName = name ?? existingUser.name;
     const updatedEmail = email ?? existingUser.email;
 
-    db.prepare(
-      `
+    db.prepare(`
       UPDATE users
       SET name = ?, email = ?
       WHERE id = ?
-    `,
-    ).run(updatedName, updatedEmail, userId);
+    `).run(updatedName, updatedEmail, userId);
 
     const updatedUser = db
       .prepare("SELECT * FROM users WHERE id = ?")
@@ -87,20 +75,41 @@ router.put("/:userId", (req, res) => {
   }
 });
 
+
 // DELETE
-router.delete("/:id", (req, res) => {
+router.delete ("/:id",(req, res) => {
   const id = req.params.id;
   try {
-    const stmt = db.prepare("DELETE FROM users WHERE id = ?");
+    const stmt  = db.prepare("DELETE FROM users WHERE id = ?")
     const result = stmt.run(id);
-    if (result.changes === 0) {
-      return res.status(404).json({ BYEBYE: "cant find you :/" });
+    if (result.changes===0){
+      return res .status(404).json({BYEBYE:"cant find you :/"})
     }
-    res.status(204).send();
+    res.status(204).send()
   } catch (error) {
     console.error("DELETE /users/:id", error);
     res.status(500).json({ fel: "can not delete user, you traped :P", error });
   }
+})
+
+
+// GET USER
+router.get("/:id", (req, res) => {
+  const id = req.params.id;
+  try {
+    const stmt = db.prepare("SELECT * FROM users WHERE id = ?");
+    const result = stmt.get(id);
+    console.log(result);
+
+    if (!result) {
+      return res.status(404).json({ BYEBYE: "cant find you :/" });
+    }
+    res.status(200).json(result);
+  } catch (error) {
+    console.error("GET /users/:id", error);
+    res.status(500).json({ fel: "can't find you :P", error });
+  }
 });
+
 
 export default router;
