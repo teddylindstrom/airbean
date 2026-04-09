@@ -93,4 +93,24 @@ router.delete ("/:id", validateId, (req, res) => {
   }
 })
 
+
+// GET USER
+router.get("/:id", (req, res) => {
+  const id = req.params.id;
+  try {
+    const stmt = db.prepare("SELECT * FROM users WHERE id = ?");
+    const result = stmt.get(id);
+    console.log(result);
+
+    if (!result) {
+      return res.status(404).json({ BYEBYE: "cant find you :/" });
+    }
+    res.status(200).json(result);
+  } catch (error) {
+    console.error("GET /users/:id", error);
+    res.status(500).json({ fel: "can't find you :P", error });
+  }
+});
+
+
 export default router;
