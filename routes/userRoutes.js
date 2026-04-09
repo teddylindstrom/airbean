@@ -1,6 +1,7 @@
 import express from "express";
 import db from "../data/db.js";
 import { v4 as uuidv4 } from "uuid";
+import { validateId } from "../middleware/validateId.js";
 
 const router = express.Router();
 
@@ -33,7 +34,7 @@ router.post("/", (req, res) => {
 
 // UPDATE user
 
-router.put("/:userId", (req, res) => {
+router.put("/:userId", validateId, (req, res) => {
   const { userId } = req.params;
   const { name, email } = req.body;
 
@@ -77,7 +78,7 @@ router.put("/:userId", (req, res) => {
 
 
 // DELETE
-router.delete ("/:id",(req, res) => {
+router.delete ("/:id", validateId, (req, res) => {
   const id = req.params.id;
   try {
     const stmt  = db.prepare("DELETE FROM users WHERE id = ?")

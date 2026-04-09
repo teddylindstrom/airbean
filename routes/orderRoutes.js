@@ -2,6 +2,7 @@ import express from "express";
 import db from "../data/db.js";
 import { v4 as uuidv4 } from "uuid";
 import { validateOrder } from "../middleware/validateOrder.js";
+import { validateId } from "../middleware/validateId.js";
 
 const router = express.Router();
 
@@ -64,7 +65,7 @@ router.post("/", validateOrder, (req, res) => {
 });
 
 // GET ORDER HISTORY
-router.get("/:userId", (req, res) => {
+router.get("/:userId", validateId, (req, res) => {
   const userId = req.params.userId;
 
   try {
