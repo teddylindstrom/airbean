@@ -95,7 +95,7 @@ router.delete ("/:id", validateId, (req, res) => {
 
 
 // GET USER
-router.get("/:id", (req, res) => {
+router.get("/:id", validateId, (req, res) => {
   const id = req.params.id;
   try {
     const stmt = db.prepare("SELECT * FROM users WHERE id = ?");
