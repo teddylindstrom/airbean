@@ -12,7 +12,7 @@ export function validateOrder(req, res, next) {
   for (const item of items) {
     const { productId, quantity, price } = item;
 
-    if (!productId || !quantity || price == null) {
+    if (!productId || quantity == null || price == null) {
       return res.status(400).json({
         error: "Each item must include productId, quantity and price",
       });

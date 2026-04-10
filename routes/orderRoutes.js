@@ -95,7 +95,7 @@ router.get("/:userId", validateId, (req, res) => {
   }
 });
 
-router.get("/orders/status/:orderId", (req, res) => {
+router.get("/status/:orderId", (req, res) => {
   const orderId = req.params.orderId;
 
   const order = db
